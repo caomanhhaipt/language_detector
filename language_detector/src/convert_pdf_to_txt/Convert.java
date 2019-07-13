@@ -61,7 +61,7 @@ public class Convert {
     
     public void convertPdfToTxt(String path_file) throws IOException{
         String extension = Convert.getFileExtension(path_file).toLowerCase();
-        System.out.println(extension);
+//        System.out.println(extension);
         if (extension.equals("pdf")){
             String path_txt = Convert.getAbstractPath(path_file, "txt");
 //            System.out.println(path_txt);

@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  *
- * @author DucPC
+ * @author haicm
  */
 public class Detector {
     public String detect_language(String text) throws IOException{
