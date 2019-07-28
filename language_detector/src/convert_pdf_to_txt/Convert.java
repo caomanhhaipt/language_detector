@@ -34,7 +34,7 @@ public class Convert {
                 PDFTextStripper tStripper = new PDFTextStripper();
 
                 String pdfFileInText = tStripper.getText(document);
-//                System.out.println(pdfFileInText);
+                
                 return pdfFileInText;
             }
         }
@@ -59,14 +59,11 @@ public class Convert {
     
     public void convertPdfToTxt(String path_file) throws IOException{
         String extension = Convert.getFileExtension(path_file).toLowerCase();
-//        System.out.println(extension);
         if (extension.equals("pdf")){
             String path_txt = Convert.getAbstractPath(path_file, "txt");
-//            System.out.println(path_txt);
 
             String txt = Convert.readPDFfile(path_file);
             String newTxt = Convert.processText(txt);
-//            System.out.println(txt);
 
             try {
                 PrintWriter out = new PrintWriter(path_txt);
@@ -74,6 +71,7 @@ public class Convert {
                 out.close();
                 
                 System.out.println("Convert success!");
+                System.out.println("Saved Path: " + path_txt);
             } catch (Exception e) {
                 System.out.println("Convert error!!");
             }
@@ -89,19 +87,6 @@ public class Convert {
     
     public static void main(String[] args) throws IOException {
         String fileName = "C:\\Users\\DucPC\\Documents\\NetBeansProjects\\Sort\\test2.pdf";
-//        String fileName = "C:\\Users\\DucPC\\Documents\\NetBeansProjects\\9.pdf";
-//        String txt = Convert.readPDFfile(fileName);
-//        
-//        String processingTxt = Convert.processText(txt);
-//        
-//        System.out.println(processingTxt);
-//        System.out.println(txt);
-//        String[] parts = txt.split("\n");
-//        
-//        for (int i = 0; i < parts.length; i++) {
-//            System.out.println("--------------------------------");
-//            System.out.println(parts[i]);
-//        }
         Convert convert = new Convert();
         
         convert.convertPdfToTxt(fileName);
