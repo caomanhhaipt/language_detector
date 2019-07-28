@@ -36,9 +36,7 @@ public class Convert {
                 String pdfFileInText = tStripper.getText(document);
 //                System.out.println(pdfFileInText);
                 return pdfFileInText;
-
             }
-
         }
         return "";
     }
@@ -66,12 +64,13 @@ public class Convert {
             String path_txt = Convert.getAbstractPath(path_file, "txt");
 //            System.out.println(path_txt);
 
-            String txt = Convert.readPDFfile(path_file);   
+            String txt = Convert.readPDFfile(path_file);
+            String newTxt = Convert.processText(txt);
 //            System.out.println(txt);
 
             try {
                 PrintWriter out = new PrintWriter(path_txt);
-                out.println(txt);     
+                out.println(newTxt);     
                 out.close();
                 
                 System.out.println("Convert success!");
@@ -83,9 +82,26 @@ public class Convert {
         }
     }
     
+    public static String processText(String text){
+
+        return text.replace("-\r\n", "");
+    }
+    
     public static void main(String[] args) throws IOException {
-        String fileName = "C:\\Users\\DucPC\\Documents\\NetBeansProjects\\9.pdf";
-        
+        String fileName = "C:\\Users\\DucPC\\Documents\\NetBeansProjects\\Sort\\test2.pdf";
+//        String fileName = "C:\\Users\\DucPC\\Documents\\NetBeansProjects\\9.pdf";
+//        String txt = Convert.readPDFfile(fileName);
+//        
+//        String processingTxt = Convert.processText(txt);
+//        
+//        System.out.println(processingTxt);
+//        System.out.println(txt);
+//        String[] parts = txt.split("\n");
+//        
+//        for (int i = 0; i < parts.length; i++) {
+//            System.out.println("--------------------------------");
+//            System.out.println(parts[i]);
+//        }
         Convert convert = new Convert();
         
         convert.convertPdfToTxt(fileName);
